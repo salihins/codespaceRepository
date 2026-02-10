@@ -1,0 +1,13 @@
+{
+  "name": "interview-workspace",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "vitest run",
+    "test:js": "vitest run js/",
+    "test:ts": "vitest run ts/"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}
