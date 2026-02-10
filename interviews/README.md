@@ -96,3 +96,23 @@ mkdir -p build && cd build
 cmake .. && make
 ctest
 ```
+
+## Troubleshooting
+
+### Java Version Issue (Codespaces)
+
+`mvn` might default to Java 11. To fix this:
+
+1.  Set `JAVA_HOME` to the Java 17 path:
+    ```bash
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    ```
+2.  Add it to PATH:
+    ```bash
+    export PATH=$JAVA_HOME/bin:$PATH
+    ```
+3.  Verify:
+    ```bash
+    mvn -version
+    ```
+    (It should now say "Java version: 17...")
