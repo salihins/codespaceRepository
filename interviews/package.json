@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "test": "vitest run",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism --threads=false",
     "test:js": "vitest run js/",
     "test:ts": "vitest run ts/"
   },
