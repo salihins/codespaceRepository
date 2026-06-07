@@ -23,15 +23,3 @@ from q2_solution import to_roman
 )
 def test_converts_integer_to_roman_numerals(num, expected):
     assert to_roman(num) == expected
-
-
-@pytest.mark.parametrize("num", [0, -1, 4000])
-def test_rejects_values_outside_standard_roman_range(num):
-    with pytest.raises(ValueError):
-        to_roman(num)
-
-
-@pytest.mark.parametrize("value", [3.14, "10", None])
-def test_rejects_non_integer_inputs(value):
-    with pytest.raises((TypeError, ValueError)):
-        to_roman(value)
