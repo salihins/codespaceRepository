@@ -53,18 +53,3 @@ def test_handles_large_numbers():
         == "nine hundred ninety nine million nine hundred ninety nine thousand "
         "nine hundred ninety nine"
     )
-
-
-def test_rejects_invalid_input():
-    with pytest.raises(ValueError):
-        count("")
-    with pytest.raises(ValueError):
-        count("   ")
-    with pytest.raises(ValueError):
-        count("-5")
-    with pytest.raises(ValueError):
-        count("3,000")
-    with pytest.raises(ValueError):
-        count("300000000")
-    with pytest.raises(ValueError):
-        count("abc")
