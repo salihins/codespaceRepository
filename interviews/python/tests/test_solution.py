@@ -1,8 +1,10 @@
 import pytest
 from solution import count
 
+
 def test_handles_zero():
     assert count("0") == "zero"
+
 
 def test_handles_basic_numbers():
     assert count("7") == "seven"
@@ -21,32 +23,34 @@ def test_handles_hundreds():
     assert count("342") == "three hundred forty two"
 
 def test_handles_thousands():
-    assert count("1000") == "one thousand"
-    assert count("1001") == "one thousand one"
-    assert count("1015") == "one thousand fifteen"
-    assert count("1100") == "one thousand one hundred"
-    assert count("2000") == "two thousand"
-    assert count("2005") == "two thousand five"
-    assert count("2345") == "two thousand three hundred forty five"
+    assert count("1 000") == "one thousand"
+    assert count("1 001") == "one thousand one"
+    assert count("1 015") == "one thousand fifteen"
+    assert count("1 100") == "one thousand one hundred"
+    assert count("2 000") == "two thousand"
+    assert count("2 005") == "two thousand five"
+    assert count("2 345") == "two thousand three hundred forty five"
+
 
 def test_handles_millions():
-    assert count("1000000") == "one million"
-    assert count("1000005") == "one million five"
-    assert count("1001000") == "one million one thousand"
-    assert count("1234567") == "one million two hundred thirty four thousand five hundred sixty seven"
-    assert count("2000000") == "two million"
-    assert count("3000000") == "three million"
+    assert count("1 000 000") == "one million"
+    assert count("1 000 005") == "one million five"
+    assert count("1 001 000") == "one million one thousand"
+    assert (
+        count("1 234 567")
+        == "one million two hundred thirty four thousand five hundred sixty seven"
+    )
+    assert count("2 000 000") == "two million"
+    assert count("3 000 000") == "three million"
+
 
 def test_handles_large_numbers():
-    assert count("999999999") == "nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine"
+    assert (
+        count("999 999 999")
+        == "nine hundred ninety nine million nine hundred ninety nine thousand "
+        "nine hundred ninety nine"
+    )
 
-def test_handles_formatting_logic():
-    assert count("   3000000   ") == "three million"
-    assert count("3,000") == "three thousand"
-    assert count("3,000,000") == "three million"
-    assert count("3 000 000") == "three million"
-    assert count("3_000_000") == "three million"
-    assert count("1_000_005") == "one million five"
 
 def test_throws_on_invalid_input():
     with pytest.raises(ValueError):
@@ -55,5 +59,9 @@ def test_throws_on_invalid_input():
         count("   ")
     with pytest.raises(ValueError):
         count("-5")
+    with pytest.raises(ValueError):
+        count("3000000")
+    with pytest.raises(ValueError):
+        count("3,000")
     with pytest.raises(ValueError):
         count("abc")
